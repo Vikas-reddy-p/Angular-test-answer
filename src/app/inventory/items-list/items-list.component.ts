@@ -71,7 +71,7 @@ export class ItemsListComponent implements OnInit,DoCheck {
     
   }
 
-  sortDesc(param){ // function to sort items with respect to parameter passed in descending order
+  sortDesc(param){ // function to sort items with respect to parameter in descending order
     if(param =="name"){
       this.itemsList.sort((a,b)=>{
         if(a.name.toLowerCase()>b.name.toLowerCase()){

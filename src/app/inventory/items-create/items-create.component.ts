@@ -49,7 +49,7 @@ export class ItemsCreateComponent implements OnInit,DoCheck {
    return this.itemsCreateForm.controls;
   }
 
-  get formValues(){ // getter tto get form values
+  get formValues(){ // getter to get form values
     return this.itemsCreateForm.value;
   }
   onSubmit(){ 
