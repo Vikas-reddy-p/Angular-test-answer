@@ -1,0 +1,172 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>{{ editMode ? "Update Item" : "Create Item" }}</h3>
+    <p style="border-top: 2px solid black"></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="itemsCreateForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <span
+              class="errorCls"
+              *ngIf="
+                formControls.name.touched && formControls.name?.errors?.required
+              "
+            >
+              Name is required
+            </span>
+            <span class="errorCls" *ngIf="formControls.name?.errors?.pattern">
+              Name can only contain alphabets and numbers
+            </span>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <span
+              class="errorCls"
+              *ngIf="
+                formControls.description.touched &&
+                formControls.description?.errors?.required
+              "
+            >
+              Description is required
+            </span>
+            <span
+              class="errorCls"
+              *ngIf="formControls.description?.errors?.pattern"
+            >
+              Description can only contain: a-z A-Z 0-9 .
+            </span>
+            <textarea
+              type="text"
+              id="description"
+              class="form-control"
+              rows="2"
+              formControlName="description"
+            >
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label for="price">Price</label>
+            <span
+              class="errorCls"
+              *ngIf="
+                formControls.price.touched &&
+                formControls.price?.errors?.required
+              "
+            >
+              Price is required
+            </span>
+            <span class="errorCls" *ngIf="formControls.price?.errors?.pattern">
+              Price can only contain numbers
+            </span>
+            <input
+              type="number"
+              id="price"
+              class="form-control"
+              formControlName="price"
+            />
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <span
+              class="errorCls"
+              *ngIf="
+                formControls.quantity.touched &&
+                formControls.quantity?.errors?.required
+              "
+            >
+              Quantity is required
+            </span>
+            <span
+              class="errorCls"
+              *ngIf="formControls.quantity?.errors?.pattern"
+            >
+              Quantity can only contain numbers
+            </span>
+            <input
+              type="number"
+              id="quantity"
+              class="form-control"
+              formControlName="quantity"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <span
+              class="errorCls"
+              *ngIf="
+                formControls.imgUrl.touched &&
+                formControls.imgUrl?.errors?.required
+              "
+            >
+              Image URL is required
+            </span>
+            <input
+              type="text"
+              id="imageUrl"
+              class="form-control"
+              formControlName="imgUrl"
+              #image
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img
+            [src]="image.value"
+            width="100px"
+            height="100px"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!itemsCreateForm.valid"
+          >
+            Save
+          </button>
+          <button
+            class="btn btn-danger"
+            style="margin-left: 5px"
+            type="button"
+            (click)="onCancel()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

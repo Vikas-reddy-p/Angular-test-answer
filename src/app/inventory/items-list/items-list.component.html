@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-primary" (click)="onNewItem()" [disabled]="editMode">
+      Create New Item
+    </button>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 10px">
+  <div class="col-xs-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            Name<a class="fa fa-arrow-up" (click)="sortAsc('name')"></a
+            ><a class="fa fa-arrow-down" (click)="sortDesc('name')"></a>
+          </th>
+          <th>Description</th>
+          <th>
+            Price<a class="fa fa-arrow-up" (click)="sortAsc('price')"></a
+            ><a class="fa fa-arrow-down" (click)="sortDesc('price')"></a>
+          </th>
+          <th>
+            Quantity<a class="fa fa-arrow-up" (click)="sortAsc('quantity')"></a
+            ><a class="fa fa-arrow-down" (click)="sortDesc('quantity')"></a>
+          </th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let items of itemsList; let i = index">
+          <td>{{ items.name }}</td>
+          <td>{{ items.description }}</td>
+          <td>{{ items.price }}</td>
+          <td>{{ items.quantity }}</td>
+          <td>
+            <img
+              [src]="items.imgUrl"
+              alt="{{ items.name }}"
+              class="img-responsive"
+              style="max-height: 50px"
+            />
+          </td>
+          <td style="font-size: x-large">
+            <button
+              (click)="onEdit(i, items)"
+              style="background-color: white; border: none"
+              [disabled]="editMode || createMode"
+              title="Edit button"
+            >
+              <i class="fa fa-edit"></i>
+            </button>
+            <button
+              (click)="onDelete(i)"
+              style="background-color: white; border: none"
+              [disabled]="editMode || createMode"
+              title="Delete Button"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
