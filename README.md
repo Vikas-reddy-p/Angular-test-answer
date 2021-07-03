@@ -1,6 +1,6 @@
 # Shopbridge
 
-**Shop Bridge** is a web application that helps track the different items for sale. It is an inventory management system which keeps records of the items with their name, description, price and an attached image of the same.
+**Shop Bridge** is a e-commerce application that helps track the different items for sale.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
